@@ -1,5 +1,8 @@
 import React from 'react'
 
+type CryptoCurrencyProps = {
+  cryptoCurrency: CryptoCurrencyType
+}
 export type CryptoCurrencyType = {
   id: string
   rank: number
@@ -14,29 +17,21 @@ export type CryptoCurrencyType = {
   vwap24Hr: number
   explorer: string
 }
-
-type CryptoCurrencyProps = {
-  cryptoCurrency: CryptoCurrencyType
-  reloadCurrencies: () => void
-}
-
-export function CryptoCurrency() {
+export function CryptoCurrency({ cryptoCurrency }: CryptoCurrencyProps) {
   return (
     <section className="currency-data">
-      <h2>
-        Rank:{props.id} Name:{props.name} Symbol:{props.symbol}{' '}
-      </h2>
+      <h3>
+        {cryptoCurrency.rank} - {cryptoCurrency.name} ({cryptoCurrency.symbol})
+      </h3>
       <ul>
-        <li>Supply:{props.supply} </li>
-        <li>Max Supply:{props.maxSupply} </li>
-        <li>Market Cap USD:{props.marketCapUsd} </li>
-        <li>Volume USD 24hr:{props.volumeUsd24Hr} </li>
-        <li>Price USD:{props.priceUsd} </li>
-        <li>Percent Change 24hrs:{props.changePercent24Hr} </li>
-        <li>VWAP 24hr:{props.vwap24Hr} </li>
-        <li>Site:{props.explorer} </li>
+        <li>Supply:{cryptoCurrency.supply} </li>
+        <li>Max Supply:{cryptoCurrency.maxSupply} </li>
+        <li>Market Cap USD:{cryptoCurrency.marketCapUsd} </li>
+        <li>Volume USD 24hr:{cryptoCurrency.volumeUsd24Hr} </li>
+        <li>Price USD:{cryptoCurrency.priceUsd} </li>
+        <li>Percent Change 24hrs:{cryptoCurrency.changePercent24Hr} </li>
+        <li>VWAP 24hr:{cryptoCurrency.vwap24Hr} </li>
       </ul>
-      <ul></ul>
     </section>
   )
 }
