@@ -19,11 +19,15 @@ export type CryptoCurrencyType = {
 }
 
 export function CryptoCurrency({ cryptoCurrency }: CryptoCurrencyProps) {
+  function loadImage() {
+    return `https://raw.githubusercontent.com/Pymmdrza/Cryptocurrency_Logos/mainx/SVG/${cryptoCurrency.symbol.toLowerCase()}.svg`
+  }
   return (
     <section className="currency-data">
       <h3>
         {cryptoCurrency.rank} - {}
-        {cryptoCurrency.name} ({cryptoCurrency.symbol})
+        {cryptoCurrency.name} <img src={loadImage()} /> ({cryptoCurrency.symbol}
+        )
       </h3>
       <ul>
         <li>Supply:{cryptoCurrency.supply} </li>
