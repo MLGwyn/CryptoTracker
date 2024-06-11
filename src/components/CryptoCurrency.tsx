@@ -26,8 +26,8 @@ export function CryptoCurrency({ cryptoCurrency }: CryptoCurrencyProps) {
     <section className="currency-data">
       <h3>
         {cryptoCurrency.rank} - {}
-        {cryptoCurrency.name} <img src={loadImage()} /> ({cryptoCurrency.symbol}
-        )
+        <a href={cryptoCurrency.explorer}>{cryptoCurrency.name}</a>{' '}
+        <img src={loadImage()} /> ({cryptoCurrency.symbol})
       </h3>
       <ul>
         <li>Supply:{cryptoCurrency.supply} </li>
