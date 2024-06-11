@@ -22,16 +22,29 @@ export function App() {
     <div className="all-content">
       <main>
         <h1>MELISSAS CRYPTO TRACKER</h1>
-        {/* this is where table tag starts */}
-        {/* below would be (1)table row with headers(th) */}
-        {cryptoCurrencies.map(function (cryptoCurrency) {
-          return (
-            <CryptoCurrency
-              key={cryptoCurrency.id}
-              cryptoCurrency={cryptoCurrency}
-            />
-          )
-        })}
+        <table>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>{''}</th>
+            <th>{''}</th>
+            <th>Supply</th>
+            <th>Max Supply</th>
+            <th>Mrkt Cap $</th>
+            <th>Vol $ 24hr</th>
+            <th>Price $</th>
+            <th>% 24hr</th>
+            <th>VWAP 24hr</th>
+          </tr>
+          {cryptoCurrencies.map(function (cryptoCurrency) {
+            return (
+              <CryptoCurrency
+                key={cryptoCurrency.id}
+                cryptoCurrency={cryptoCurrency}
+              />
+            )
+          })}
+        </table>
       </main>
     </div>
   )

@@ -24,13 +24,29 @@ body {
 img {
   max-width: 1.5rem;
 }
-
-h3 {
-  place-content: center;
+h1 {
+  text-align: center;
 }
+
 .up {
   color: green;
 }
 .down {
   color: red;
+}
+
+th {
+  background-color: darkblue;
+  color: white;
+  font-weight: bold;
+  padding: 4px;
+}
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+td {
+  padding: 5px;
+}
+.center-cell {
+  text-align: center;
 }

@@ -23,27 +23,30 @@ export function CryptoCurrency({ cryptoCurrency }: CryptoCurrencyProps) {
     return `https://raw.githubusercontent.com/Pymmdrza/Cryptocurrency_Logos/mainx/SVG/${cryptoCurrency.symbol.toLowerCase()}.svg`
   }
   const positive = cryptoCurrency.changePercent24Hr > 0
+  let USDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
 
   return (
-    // below (section) becomes <tr>
-    <section className="currency-data">
-      {/* everything below becomes <td> */}
-      <h3>
-        {cryptoCurrency.rank} - {}
-        <a href={cryptoCurrency.explorer}>{cryptoCurrency.name}</a>{' '}
-        <img src={loadImage()} /> ({cryptoCurrency.symbol})
-      </h3>
-      <ul>
-        <li>Supply:{cryptoCurrency.supply} </li>
-        <li>Max Supply:{cryptoCurrency.maxSupply} </li>
-        <li>Market Cap USD:{cryptoCurrency.marketCapUsd} </li>
-        <li>Volume USD 24hr:{cryptoCurrency.volumeUsd24Hr} </li>
-        <li>Price USD:{cryptoCurrency.priceUsd} </li>
-        <li className={positive ? 'up' : 'down'}>
-          Percent Change 24hrs:{cryptoCurrency.changePercent24Hr}{' '}
-        </li>
-        <li>VWAP 24hr:{cryptoCurrency.vwap24Hr} </li>
-      </ul>
-    </section>
+    <tr className="currency-data">
+      <td>{cryptoCurrency.rank}</td>
+      <td>
+        <a href={cryptoCurrency.explorer}>{cryptoCurrency.name}</a>
+      </td>
+      <td>
+        <img src={loadImage()} />
+      </td>
+      <td>({cryptoCurrency.symbol})</td>
+      <td>{USDollar.format(cryptoCurrency.supply)}</td>
+      <td>{USDollar.format(cryptoCurrency.maxSupply)}</td>
+      <td>{USDollar.format(cryptoCurrency.marketCapUsd)}</td>
+      <td>{USDollar.format(cryptoCurrency.volumeUsd24Hr)}</td>
+      <td>{USDollar.format(cryptoCurrency.priceUsd)}</td>
+      <td className={positive ? 'up' : 'down'}>
+        {USDollar.format(cryptoCurrency.changePercent24Hr)}
+      </td>
+      <td>{USDollar.format(cryptoCurrency.vwap24Hr)}</td>
+    </tr>
   )
 }
