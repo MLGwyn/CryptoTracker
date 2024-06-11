@@ -22,8 +22,12 @@ export function CryptoCurrency({ cryptoCurrency }: CryptoCurrencyProps) {
   function loadImage() {
     return `https://raw.githubusercontent.com/Pymmdrza/Cryptocurrency_Logos/mainx/SVG/${cryptoCurrency.symbol.toLowerCase()}.svg`
   }
+  const positive = cryptoCurrency.changePercent24Hr > 0
+
   return (
+    // below (section) becomes <tr>
     <section className="currency-data">
+      {/* everything below becomes <td> */}
       <h3>
         {cryptoCurrency.rank} - {}
         <a href={cryptoCurrency.explorer}>{cryptoCurrency.name}</a>{' '}
@@ -35,7 +39,9 @@ export function CryptoCurrency({ cryptoCurrency }: CryptoCurrencyProps) {
         <li>Market Cap USD:{cryptoCurrency.marketCapUsd} </li>
         <li>Volume USD 24hr:{cryptoCurrency.volumeUsd24Hr} </li>
         <li>Price USD:{cryptoCurrency.priceUsd} </li>
-        <li>Percent Change 24hrs:{cryptoCurrency.changePercent24Hr} </li>
+        <li className={positive ? 'up' : 'down'}>
+          Percent Change 24hrs:{cryptoCurrency.changePercent24Hr}{' '}
+        </li>
         <li>VWAP 24hr:{cryptoCurrency.vwap24Hr} </li>
       </ul>
     </section>

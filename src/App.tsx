@@ -22,6 +22,8 @@ export function App() {
     <div className="all-content">
       <main>
         <h1>MELISSAS CRYPTO TRACKER</h1>
+        {/* this is where table tag starts */}
+        {/* below would be (1)table row with headers(th) */}
         {cryptoCurrencies.map(function (cryptoCurrency) {
           return (
             <CryptoCurrency
